@@ -5,6 +5,7 @@ Currently without some possibly needed stuff, like waiting for receiving events 
 - dealing with throwing errors of functions and function's returned values
 - multiple comparisons in single specification (achieved by simple logical operations)
 - apprehensible desriptions of failed specifications.
+
 Example suite class:
 
     public class ExampleSuite extends Suite {
