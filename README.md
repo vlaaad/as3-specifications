@@ -82,7 +82,7 @@ After instantiating suite and adding specs, result will be printed:
 
 # Other stuff
 
-You can customize suite your suite by overriding it's init method:
+You can customize your suite by overriding it's init method:
 
     override protected function init():void {
         /**
@@ -146,7 +146,7 @@ When some specs are failed, output will be like this:
     [trace]    [info] Example:
     [trace] [success] - one claim
     [trace]    [fail] - other claim fails because of:
-    [trace]    [fail]   [function should throw error with message "not expected message", message was: "" (fail)]
+    [trace]    [fail]   [function should throw error with message "expected message", message was: "not expected message" (fail)]
     [trace]    [info]
     [trace]    [fail] Total claims: 2. Successful: 1, failed: 1
 
