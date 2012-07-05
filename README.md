@@ -80,6 +80,76 @@ After instantiating suite and adding specs, result will be printed:
     [trace]    [info]
     [trace] [success] Total claims: 19. Successful: 19, failed: 0
 
+# Other stuff
+
+You can customize suite your suite by overriding it's init method:
+
+    override protected function init():void {
+        /**
+        * Your custom logger, must implement ISpecLogger. 
+        * Default logger is instance of TraceSpecLogger class
+        */
+        setSpecLogger(new MyCustomSpecLogger()); 
+        /**
+        * By default only failed statements params are printed.
+        * You can print them all.
+        */
+        printAll = true;
+    }
+    
+When you print all result comments (not only failed), output will look like:
+
+    [trace]    [info] Example:
+    [trace] [success] - Spec catches errors
+    [trace] [success]   [function should throw (success)]
+    [trace] [success] - Spec catches errors with specific messages
+    [trace] [success]   [function should throw error with message "a" (success)]
+    [trace] [success] - Spec detects not throwing
+    [trace] [success]   [function should not throw (success)]
+    [trace] [success] - Spec catches errors with specific messages
+    [trace] [success]   [function should not throw error with message "a", message was "b" (success)]
+    [trace] [success] - Spec compares values
+    [trace] [success]   [1 is equal 1 (success)]
+    [trace] [success] - Spec with values, returned by functions
+    [trace] [success]   [function should not throw (success)] AND [1 is equal 1 (success)]
+    [trace] [success] - More comparisons
+    [trace] [success]   [1 should be less or equal 1 (success)]
+    [trace] [success] - More comparisons
+    [trace] [success]   [1 should be less or equal 2 (success)]
+    [trace] [success] - More comparisons
+    [trace] [success]   [1 should be less than 2 (success)]
+    [trace] [success] - More comparisons
+    [trace] [success]   [1 should be more than 0 (success)]
+    [trace] [success] - More comparisons
+    [trace] [success]   [1 should be more or equal 0 (success)]
+    [trace] [success] - More comparisons
+    [trace] [success]   [1 should be more or equal 1 (success)]
+    [trace] [success] - More comparisons
+    [trace] [success]   [1 is equal 1 (success)]
+    [trace] [success] - More comparisons
+    [trace] [success]   [1 is not equal 2 (success)]
+    [trace] [success] - More comparisons
+    [trace] [success]   [1 is not equal null (success)]
+    [trace] [success] - More comparisons
+    [trace] [success]   [null is equal null (success)]
+    [trace] [success] - Simple And
+    [trace] [success]   [false is equal false (success)] AND [true is equal true (success)]
+    [trace] [success] - Simple Or
+    [trace] [success]   [false is equal true (fail)] OR [true is equal true (success)]
+    [trace] [success] - Complex logic
+    [trace] [success]   [true is equal false (fail)] OR [1 should be more or equal -4 (success)] AND [function should throw (success)]
+    [trace]    [info]
+    [trace] [success] Total claims: 19. Successful: 19, failed: 0
+    
+When some specs are failed, output will be like this:
+
+    [trace]    [info] Example:
+    [trace] [success] - one claim
+    [trace]    [fail] - other claim fails because of:
+    [trace]    [fail]   [function should throw error with message "not expected message", message was: "" (fail)]
+    [trace]    [info]
+    [trace]    [fail] Total claims: 2. Successful: 1, failed: 1
+
 # License
 WTFPL
 # Like it? Fork it and help it to grow!
