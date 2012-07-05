@@ -1,4 +1,10 @@
-Simple specification suite. Currently without some possibly needed stuff, like waiting for receiving events etc, but very intuitive and easy to use.
+# Simple specification suite. 
+Currently without some possibly needed stuff, like waiting for receiving events etc, but very intuitive and easy to use.
+# Main features:
+- comparing values (lol)
+- dealing with throwing errors of functions and function's returned values
+- multiple comparisons in single specification (achieved by simple logical operations)
+- apprehensible desriptions of failed specifications.
 Example suite class:
 
     public class ExampleSuite extends Suite {
@@ -72,3 +78,7 @@ After instantiating suite and adding specs, result will be printed:
     [trace] [success] - Complex logic
     [trace]    [info]
     [trace] [success] Total claims: 19. Successful: 19, failed: 0
+
+# License
+WTFPL
+# Like it? Fork it and help it to grow!
