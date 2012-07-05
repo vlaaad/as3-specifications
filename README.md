@@ -1,5 +1,6 @@
 Simple specification suite. Currently without some possibly needed stuff, like waiting for receiving events etc, but very intuitive and easy to use.
 Example suite class:
+
     public class ExampleSuite extends Suite {
         public function ExampleSuite() {
         }
@@ -7,7 +8,9 @@ Example suite class:
             add(new ExampleSpec("Example"));
         }
     }
+    
 Example spec:
+
     public class ExampleSpec extends Spec {
     
         public function ExampleSpec(describedEntity:String) {
@@ -44,7 +47,9 @@ Example spec:
             throw new Error(message);
         }
     }
+    
 After instantiating suite and adding specs, result will be printed:
+
     [trace]    [info] Example:
     [trace] [success] - Spec catches errors
     [trace] [success] - Spec catches errors with specific messages
