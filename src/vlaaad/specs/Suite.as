@@ -44,7 +44,7 @@ public class Suite {
 					successes++;
 					_logger.logSpecResult(2, "- " + statement._statement);
 					if (_printAll)
-						_logger.logSpecResult(2, "  " + statement.comment);
+						_logger.logSpecResult(1, "  " + statement.comment);
 				} else {
 					fails++;
 					_logger.logSpecResult(3, "- " + statement._statement + " fails because of:");

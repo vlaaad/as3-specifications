@@ -3,6 +3,8 @@
  * Date: 03.07.12
  */
 package vlaaad.specs.should {
+import flash.utils.getTimer;
+
 import vlaaad.specs.Statement;
 import vlaaad.specs.StatementContinue;
 import vlaaad.specs.specs_internal;
@@ -27,6 +29,22 @@ public class FunctionShould extends Should {
 	public function shouldNotThrowError(errorMessage:String = null):StatementContinue {
 		assertNotThrows(errorMessage);
 		return _statementContinue;
+	}
+
+	/**
+	 * Time in milliseconds
+	 */
+	public function get executionTime():ValueShould {
+		assertNotThrows(null);
+		const start:int = getTimer();
+		try {
+			_func.apply(null, _params);
+		} catch (e:*) {
+
+		} finally {
+			const time:int = getTimer() - start;
+			return _statementContinue.and.value(time);
+		}
 	}
 
 	public function get returnedValue():ValueShould {
