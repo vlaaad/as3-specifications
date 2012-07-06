@@ -25,12 +25,17 @@ Example spec:
         }
 
         override protected function describe():void {
+            //dealing with errors
             claim("Spec catches errors").so.calling(raise).shouldThrowError();
             claim("Spec catches errors with specific messages").so.callingWithParams(raise, "a").shouldThrowError("a");
             claim("Spec detects not throwing").so.calling(echo).shouldNotThrowError();
             claim("Spec catches errors with specific messages").so.callingWithParams(raise, "b").shouldNotThrowError("a");
-            claim("Spec compares values").so.value(1).shouldBeEqual(1);
+            
+            //dealing with returned values of passed functions
             claim("Spec with values, returned by functions").so.callingWithParams(echo, 1).returnedValue.shouldBeEqual(1);
+            
+            //comparisons
+            claim("Spec compares values").so.value(1).shouldBeEqual(1);
             claim("More comparisons").so.value(1).shouldBeLessOrEqual(1);
             claim("More comparisons").so.value(1).shouldBeLessOrEqual(2);
             claim("More comparisons").so.value(1).shouldBeLessThan(2);
@@ -41,6 +46,8 @@ Example spec:
             claim("More comparisons").so.value(1).shouldNotBeEqual(2);
             claim("More comparisons").so.value(1).shouldNotBeNull;
             claim("More comparisons").so.value(null).shouldBeNull;
+            
+            //logical statements
             claim("Simple And").so.value(false).shouldBeEqual(false).and.value(true).shouldBeEqual(true);
             claim("Simple Or").so.value(false).shouldBeEqual(true).or.value(true).shouldBeEqual(true);
             claim("Complex logic").so.value(true).shouldBeEqual(false).or.value(1).shouldBeMoreOrEqual(-4).and.calling(raise).shouldThrowError();
