@@ -12,7 +12,7 @@ Example suite class:
         public function ExampleSuite() {
         }
         override protected function addSpecs():void {
-            add(new ExampleSpec("Example"));
+            add(new ExampleSpec());
         }
     }
     
@@ -20,8 +20,8 @@ Example spec:
 
     public class ExampleSpec extends Spec {
     
-        public function ExampleSpec(describedEntity:String) {
-            super(describedEntity);
+        public function ExampleSpec() {
+            super("Example"); //described entity
         }
 
         override protected function describe():void {
