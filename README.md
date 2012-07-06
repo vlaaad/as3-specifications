@@ -1,7 +1,7 @@
 # Simple specification suite
 Currently without some possibly needed stuff, like waiting for receiving events etc, but very intuitive and easy to use.
 # Changelog
-6.07 added execution time (int value in milliseconds) for function specifications. Usage example:
+6.07. added execution time (int value in milliseconds) for function specifications. Usage example:
 
     claim("my function is fast").so.calling(heavyCalculations).executionTime.shouldBeLessOrEqual(1);
 
