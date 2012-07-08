@@ -1,9 +1,5 @@
 # Simple specification suite
 Currently without some possibly needed stuff, like waiting for receiving events etc, but very intuitive and easy to use.
-# Changelog
-6.07. added execution time (int value in milliseconds) for function specifications. Usage example:
-
-    claim("my function is fast").so.calling(heavyCalculations).executionTime.shouldBeLessOrEqual(1);
 
 # Main features:
 - comparing values (lol)
@@ -161,6 +157,12 @@ When some specs are failed, output will be like this:
     [trace]    [fail]   [function should throw error with message "expected message", message was: "not expected message" (fail)]
     [trace]    [info]
     [trace]    [fail] Total claims: 2. Successful: 1, failed: 1
+# Changelog
+6.07. added execution time (int value in milliseconds) for function specifications. Usage example:
+
+    claim("my function is fast").so.calling(heavyCalculations).executionTime.shouldBeLessOrEqual(1);
+
+8.07 fixed executionTime and returnedValue blocks so passed function is called only once.
 
 # License
 WTFPL
