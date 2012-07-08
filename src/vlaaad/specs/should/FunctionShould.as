@@ -35,27 +35,26 @@ public class FunctionShould extends Should {
 	 * Time in milliseconds
 	 */
 	public function get executionTime():ValueShould {
-		assertNotThrows(null);
+		var error:Error;
 		const start:int = getTimer();
 		try {
 			_func.apply(null, _params);
-		} catch (e:*) {
-
+		} catch (e:Error) {
+			error = e;
 		} finally {
 			const time:int = getTimer() - start;
-			return _statementContinue.and.value(time);
 		}
+		if (error) {
+			setResult(false, "function should not throw");
+		} else {
+			setResult(true, "function should not throw");
+		}
+		return _statementContinue.and.value(time);
 	}
 
 	public function get returnedValue():ValueShould {
-		assertNotThrows(null);
-		var value:*;
-		try {
-			value = _func.apply(null, _params);
-		} catch (e:*) {
-
-		}
-		return _statementContinue.and.value(value);
+		var v:* = assertNotThrows(null);
+		return _statementContinue.and.value(v);
 	}
 
 	private function assertThrows(errorMessage:String):void {
@@ -81,10 +80,10 @@ public class FunctionShould extends Should {
 
 	}
 
-	private function assertNotThrows(errorMessage:String):void {
+	private function assertNotThrows(errorMessage:String):* {
 		var error:Error;
 		try {
-			_func.apply(null, _params);
+			var returned:* = _func.apply(null, _params);
 		} catch (e:Error) {
 			error = e;
 		}
@@ -101,6 +100,7 @@ public class FunctionShould extends Should {
 		} else {
 			setResult(true, "function should not throw");
 		}
+		return returned;
 	}
 }
 }
