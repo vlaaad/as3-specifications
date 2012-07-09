@@ -158,11 +158,11 @@ When some specs are failed, output will be like this:
     [trace]    [info]
     [trace]    [fail] Total claims: 2. Successful: 1, failed: 1
 # Changelog
+8.07 fixed executionTime and returnedValue blocks so passed function is called only once.
 6.07. added execution time (int value in milliseconds) for function specifications. Usage example:
 
     claim("my function is fast").so.calling(heavyCalculations).executionTime.shouldBeLessOrEqual(1);
 
-8.07 fixed executionTime and returnedValue blocks so passed function is called only once.
 
 # License
 WTFPL
